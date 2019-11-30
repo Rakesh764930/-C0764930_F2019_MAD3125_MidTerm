@@ -107,7 +107,7 @@ public class DataEntryActivity  extends AppCompatActivity  {
 
         txtDate.setText(sdf.format(calendar.getTime()));
 
-        
+
     }
 
 
