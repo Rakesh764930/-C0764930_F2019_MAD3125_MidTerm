@@ -49,4 +49,10 @@ public class DataEntryActivity  extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-              
+                // TODO Auto-generated method stub
+                new DatePickerDialog(DataEntryActivity.this, date, calendar
+                        .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
