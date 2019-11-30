@@ -47,6 +47,14 @@
             android:layout_height="wrap_content"
             android:hint="Last Name" />
     </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/txtFullName"
+        android:layout_width="match_parent"
+        android:layout_height ="wrap_content"
+        android:layout_weight ="1"
+        android:outlineProvider="bounds"
+
+        android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txtDate"

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -26,6 +27,9 @@ public class DataEntryActivity  extends AppCompatActivity {
     RadioButton rbMale;
     RadioButton rbFemale;
     RadioButton rbOthers;
+    TextView txtFullName;
+    EditText txtFname;
+    EditText txtLname;
     DatePickerDialog datePickerDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +79,14 @@ public class DataEntryActivity  extends AppCompatActivity {
             }
         });
 
+        txtFullName=findViewById(R.id.txtFullName);
+
+txtLname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        txtFullName=
+    }
+});
 
     }
     private void dateFormat() {
