@@ -41,7 +41,10 @@ double EI;
     public double eiAmount(double gross_income){
         double gi=gross_income;
         double ei_slab=53_100.00;
-       
+        double ei_rate=1.62;
+        double actual_ei=0.0;
+     
+    }
 
 
 
