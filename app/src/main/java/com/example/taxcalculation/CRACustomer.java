@@ -37,7 +37,11 @@ double EI;
        return actual_rrsp;
         }
 
- 
+
+    public double eiAmount(double gross_income){
+        double gi=gross_income;
+        double ei_slab=53_100.00;
+       
 
 
 
