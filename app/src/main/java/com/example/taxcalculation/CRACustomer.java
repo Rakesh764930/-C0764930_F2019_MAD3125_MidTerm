@@ -13,47 +13,45 @@ public class CRACustomer  {
     double grossIncome;
     double rrsp_contri;
     double EI;
-    double total_taxable_amount=(grossIncome-cppAmount(100000)+rrspAmount(100000)+eiAmount(100000));
+    double total_taxable_amount=(grossIncome-cppAmount()+rrspAmount()+eiAmount());
 
         // calculating CPP amount
-    public double cppAmount(double gross_income){
-        double gi=gross_income;
+    public double cppAmount(){
         double cpp_slab=57_400.00;
         double cpp_rate=5.10;
         double actual_cpp=0.0;
-        if(gi>=cpp_slab)
+        if(grossIncome>=cpp_slab)
         {
             actual_cpp=(cpp_slab*cpp_rate)/100;
         }
         else {
-            actual_cpp=(gi*cpp_rate)/100;
+            actual_cpp=(grossIncome*cpp_rate)/100;
         }
             return actual_cpp;
     }
 
     // calculating RRSP amount
-    public double rrspAmount(double gross_income){
-        double gi=gross_income;
+    public double rrspAmount(){
         double rrsp_perc=18.00;
-        double actual_rrsp=(gi*rrsp_perc)/100;
+        double actual_rrsp=(grossIncome*rrsp_perc)/100;
         if(actual_rrsp>rrsp_contri) {
-            System.out.println("RRSP amount exceede ,You may have to face penalty");
+            System.out.println("RRSP amount exceeded ,You may have to face penalty");
         }
        return actual_rrsp;
         }
 
     // calculating EI amount
-    public double eiAmount(double gross_income){
-        double gi=gross_income;
+    public double eiAmount(){
+
         double ei_slab=53_100.00;
         double ei_rate=1.62;
         double actual_ei=0.0;
-        if(gi>=ei_slab)
+        if(grossIncome>=ei_slab)
         {
             actual_ei=(ei_slab*ei_rate)/100;
         }
         else {
-            actual_ei=(gi*ei_rate)/100;
+            actual_ei=(grossIncome*ei_rate)/100;
         }
         return actual_ei;
     }
@@ -61,5 +59,12 @@ public class CRACustomer  {
         System.out.println(total_taxable_amount);
     }
 
+    // Calculating provincial tax
+    public double proTax(){
+        double pro_tax=0.0;
+        total_taxable_amount=total_taxable_amount-10_582;
+        if(total_taxable_amount)
+
+    }
 
 }
