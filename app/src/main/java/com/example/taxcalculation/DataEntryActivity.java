@@ -22,7 +22,9 @@ public class DataEntryActivity  extends AppCompatActivity {
     final Calendar calendar = Calendar.getInstance();
     TextView txtDate;
     RadioGroup rgGender;
-   
+    RadioButton rbMale;
+    RadioButton rbFemale;
+    RadioButton rbOthers;
     DatePickerDialog datePickerDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
