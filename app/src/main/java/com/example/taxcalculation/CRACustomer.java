@@ -81,6 +81,12 @@ public class CRACustomer  {
         if(total_taxable_amount<=first_slab) {
             pro_tax = (first_slab * first_slab_perc) / 100;
             total_taxable_amount = total_taxable_amount - first_slab;
-        
+        }
+
+        if(total_taxable_amount<=second_slab) {
+            pro_tax = (second_slab * second_slab_perc) / 100;
+            total_taxable_amount = total_taxable_amount - second_slab;
+        }
+     
 
 }
