@@ -31,7 +31,14 @@ double EI;
         double gi=gross_income;
         double rrsp_perc=18.00;
         double actual_rrsp=(gi*rrsp_perc)/100;
-   
+        if(actual_rrsp>rrsp_contri) {
+            System.out.println("RRSP amount exceede ,You may have to face penalty");
+        }
+       return actual_rrsp;
+        }
+
+ 
+
 
 
 
