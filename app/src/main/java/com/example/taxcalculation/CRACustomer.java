@@ -13,7 +13,9 @@ public class CRACustomer  {
     double grossIncome;
     double rrsp_contri;
     double EI;
+
     double total_taxable_amount=(grossIncome-cppAmount()+rrspAmount()+eiAmount());
+    double total_tax_paid=provincialTax()+federalTax();
 
         // calculating CPP amount
     public double cppAmount(){
@@ -106,16 +108,16 @@ public class CRACustomer  {
         double fed_tax=0.0;
 
         double first_slab_perc=15.00;
-        double first_slab=33324;
+        double first_slab=35561;
 
         double second_slab_perc=20.50;
-        double second_slab=43907;
+        double second_slab=47628.99;
 
         double third_slab_perc=26.00;
-        double third_slab=62187;
+        double third_slab=52407.99;
 
         double fourth_slab_perc=29.00;
-        double fourth_slab=70000;
+        double fourth_slab=60703.99;
 
         double final_slab=0.01;
         double final_slab_perc=33.00;
@@ -142,6 +144,7 @@ public class CRACustomer  {
         }
         return fed_tax;
     }
+
 
 
 }
