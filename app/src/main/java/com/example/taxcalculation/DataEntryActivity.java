@@ -79,14 +79,6 @@ public class DataEntryActivity  extends AppCompatActivity {
             }
         });
 
-        txtFullName=findViewById(R.id.txtFullName);
-
-txtLname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-    @Override
-    public void onFocusChange(View v, boolean hasFocus) {
-        txtFullName=
-    }
-});
 
     }
     private void dateFormat() {
