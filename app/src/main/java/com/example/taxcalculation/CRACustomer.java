@@ -12,7 +12,7 @@ public class CRACustomer  {
     double grossIncome;
     double rrsp_contri;
 double EI;
-
+        // calculating CPP amount
     public double cppAmount(double gross_income){
         double gi=gross_income;
         double cpp_slab=57_400.00;
@@ -27,6 +27,8 @@ double EI;
         }
             return actual_cpp;
     }
+
+    // calculating RRSP amount
     public double rrspAmount(double gross_income){
         double gi=gross_income;
         double rrsp_perc=18.00;
@@ -37,7 +39,7 @@ double EI;
        return actual_rrsp;
         }
 
-
+    // calculating EI amount
     public double eiAmount(double gross_income){
         double gi=gross_income;
         double ei_slab=53_100.00;
