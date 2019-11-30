@@ -1,10 +1,12 @@
 package com.example.taxcalculation;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Toast;
 
-public class CRACustomer  {
+public class CRACustomer implements Parcelable {
 
     int sin_number;
     String first_name;
@@ -17,7 +19,31 @@ public class CRACustomer  {
     double total_taxable_amount=(grossIncome-cppAmount()+rrspAmount()+eiAmount());
     double total_tax_paid=provincialTax()+federalTax();
 
-        // calculating CPP amount
+    protected CRACustomer(Parcel in) {
+        sin_number = in.readInt();
+        first_name = in.readString();
+        last_name = in.readString();
+        full_name = in.readString();
+        grossIncome = in.readDouble();
+        rrsp_contri = in.readDouble();
+        EI = in.readDouble();
+        total_taxable_amount = in.readDouble();
+        total_tax_paid = in.readDouble();
+    }
+
+    public static final Creator<CRACustomer> CREATOR = new Creator<CRACustomer>() {
+        @Override
+        public CRACustomer createFromParcel(Parcel in) {
+            return new CRACustomer(in);
+        }
+
+        @Override
+        public CRACustomer[] newArray(int size) {
+            return new CRACustomer[size];
+        }
+    };
+
+    // calculating CPP amount
     public double cppAmount(){
         double cpp_slab=57400.00;
         double cpp_rate=5.10;
@@ -146,5 +172,21 @@ public class CRACustomer  {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(sin_number);
+        dest.writeString(first_name);
+        dest.writeString(last_name);
+        dest.writeString(full_name);
+        dest.writeDouble(grossIncome);
+        dest.writeDouble(rrsp_contri);
+        dest.writeDouble(EI);
+        dest.writeDouble(total_taxable_amount);
+        dest.writeDouble(total_tax_paid);
+    }
 }
