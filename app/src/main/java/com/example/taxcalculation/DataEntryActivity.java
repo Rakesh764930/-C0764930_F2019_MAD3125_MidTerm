@@ -106,6 +106,8 @@ public class DataEntryActivity  extends AppCompatActivity  {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         txtDate.setText(sdf.format(calendar.getTime()));
+
+        
     }
 
 
