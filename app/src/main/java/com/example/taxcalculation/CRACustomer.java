@@ -105,20 +105,20 @@ public class CRACustomer  {
     public double federalTax(){
         double fed_tax=0.0;
 
-        double first_slab_perc=5.05;
+        double first_slab_perc=15.00;
         double first_slab=33324;
 
-        double second_slab_perc=9.15;
+        double second_slab_perc=20.50;
         double second_slab=43907;
 
-        double third_slab_perc=11.16;
+        double third_slab_perc=26.00;
         double third_slab=62187;
 
-        double fourth_slab_perc=12.16;
+        double fourth_slab_perc=29.00;
         double fourth_slab=70000;
 
         double final_slab=0.01;
-        double final_slab_perc=13.16;
+        double final_slab_perc=33.00;
         total_taxable_amount=total_taxable_amount-12069.00;
         if(total_taxable_amount<=first_slab) {
             fed_tax = (first_slab * first_slab_perc) / 100;
