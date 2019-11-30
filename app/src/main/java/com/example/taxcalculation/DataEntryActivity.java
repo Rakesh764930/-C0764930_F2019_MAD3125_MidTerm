@@ -28,8 +28,8 @@ public class DataEntryActivity  extends AppCompatActivity {
     RadioButton rbFemale;
     RadioButton rbOthers;
     TextView txtFullName;
-    EditText txtFname;
-    EditText txtLname;
+    EditText edtFname;
+    EditText edtLname;
     DatePickerDialog datePickerDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
