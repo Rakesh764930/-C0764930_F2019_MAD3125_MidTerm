@@ -17,7 +17,7 @@ public class CRACustomer  {
 
         // calculating CPP amount
     public double cppAmount(){
-        double cpp_slab=57_400.00;
+        double cpp_slab=57400.00;
         double cpp_rate=5.10;
         double actual_cpp=0.0;
         if(grossIncome>=cpp_slab)
@@ -43,7 +43,7 @@ public class CRACustomer  {
     // calculating EI amount
     public double eiAmount(){
 
-        double ei_slab=53_100.00;
+        double ei_slab=53100.00;
         double ei_rate=1.62;
         double actual_ei=0.0;
         if(grossIncome>=ei_slab)
@@ -62,11 +62,25 @@ public class CRACustomer  {
     // Calculating provincial tax
     public double proTax(){
         double pro_tax=0.0;
-        double first_slab=33324;
-        double first_slab_perc=5.05;
-        total_taxable_amount=total_taxable_amount-10_582;
-        if(total_taxable_amount<=)
 
-    }
+        double first_slab_perc=5.05;
+        double first_slab=33324;
+
+        double second_slab_perc=9.15;
+        double second_slab=43907;
+
+        double third_slab_perc=11.16;
+        double third_slab=62187;
+
+        double fourth_slab_perc=12.16;
+        double fourth_slab=70000;
+
+        double final_slab=0.01;
+        double final_slab_perc=13.16;
+        total_taxable_amount=total_taxable_amount-10582.00;
+        if(total_taxable_amount<=first_slab) {
+            pro_tax = (first_slab * first_slab_perc) / 100;
+            total_taxable_amount = total_taxable_amount - first_slab;
+        
 
 }
