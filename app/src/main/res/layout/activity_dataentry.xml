@@ -52,9 +52,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Select date"
-            android:textAlignment="center"
+            android:text="Select Date Of Birth"
+
             android:textSize="18sp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="120dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

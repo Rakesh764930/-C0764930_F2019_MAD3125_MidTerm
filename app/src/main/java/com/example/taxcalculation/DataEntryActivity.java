@@ -31,6 +31,8 @@ public class DataEntryActivity  extends AppCompatActivity {
 
 
         txtDate= findViewById(R.id.txtDate);
+
+       // https://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -63,3 +65,5 @@ public class DataEntryActivity  extends AppCompatActivity {
 
         txtDate.setText(sdf.format(calendar.getTime()));
     }}
+
+
