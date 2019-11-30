@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -19,6 +21,8 @@ public class DataEntryActivity  extends AppCompatActivity {
 
     final Calendar calendar = Calendar.getInstance();
     TextView txtDate;
+    RadioGroup rgGender;
+   
     DatePickerDialog datePickerDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
