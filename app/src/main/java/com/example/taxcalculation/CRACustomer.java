@@ -62,8 +62,10 @@ public class CRACustomer  {
     // Calculating provincial tax
     public double proTax(){
         double pro_tax=0.0;
+        double first_slab=33324;
+        double first_slab_perc=5.05;
         total_taxable_amount=total_taxable_amount-10_582;
-        if(total_taxable_amount)
+        if(total_taxable_amount<=)
 
     }
 
