@@ -1,6 +1,7 @@
 package com.example.taxcalculation;
 
 import android.app.AlertDialog;
+import android.util.Log;
 import android.widget.Toast;
 
 public class CRACustomer  {
@@ -11,7 +12,9 @@ public class CRACustomer  {
     String full_name=last_name.toUpperCase()+","+first_name;
     double grossIncome;
     double rrsp_contri;
-double EI;
+    double EI;
+    double total_taxable_amount=(grossIncome-cppAmount(100000)+rrspAmount(100000)+eiAmount(100000));
+
         // calculating CPP amount
     public double cppAmount(double gross_income){
         double gi=gross_income;
@@ -54,8 +57,9 @@ double EI;
         }
         return actual_ei;
     }
-
-
+    public void print(){
+        System.out.println(total_taxable_amount);
+    }
 
 
 }
