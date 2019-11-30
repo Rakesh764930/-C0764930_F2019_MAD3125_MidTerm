@@ -1,10 +1,8 @@
 package com.example.taxcalculation;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,9 +15,10 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
 import java.util.Locale;
 
-public class DataEntryActivity  extends AppCompatActivity {
+public class DataEntryActivity  extends AppCompatActivity  {
 
     final Calendar calendar = Calendar.getInstance();
     TextView txtDate;
@@ -30,11 +29,19 @@ public class DataEntryActivity  extends AppCompatActivity {
     TextView txtFullName;
     EditText edtFname;
     EditText edtLname;
+    Button btnSubmit;
+    TextView txtAge;
     DatePickerDialog datePickerDialog;
+
+    int dDay;
+     int dMonth;
+     int dYear;
+     int sYear;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dataentry);
+        setContentView(R.layout.activity_data_entry);
         txtDate= findViewById(R.id.txtDate);
 
 
@@ -44,14 +51,16 @@ public class DataEntryActivity  extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
-                // TODO Auto-generated method stub
+
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, monthOfYear);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 dateFormat();
+
             }
 
         };
+
 
         txtDate.setOnClickListener(new View.OnClickListener() {
 
@@ -62,6 +71,7 @@ public class DataEntryActivity  extends AppCompatActivity {
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+        txtAge=findViewById(R.id.txtAge);
         rgGender=findViewById(R.id.rgGender);
         rbMale=findViewById(R.id.rbMale);
         rbFemale=findViewById(R.id.rbFemale);
@@ -79,6 +89,14 @@ public class DataEntryActivity  extends AppCompatActivity {
             }
         });
 
+        //submit button
+        btnSubmit=findViewById(R.id.btnSubmit);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
     private void dateFormat() {
@@ -87,6 +105,7 @@ public class DataEntryActivity  extends AppCompatActivity {
 
         txtDate.setText(sdf.format(calendar.getTime()));
     }
+
 
 
 
