@@ -56,3 +56,10 @@ public class DataEntryActivity  extends AppCompatActivity {
             }
         });
 
+    }
+    private void dateFormat() {
+        String myFormat = "dd-MMM-yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        txtDate.setText(sdf.format(calendar.getTime()));
+    }}
