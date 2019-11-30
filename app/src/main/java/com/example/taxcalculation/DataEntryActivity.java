@@ -42,3 +42,11 @@ public class DataEntryActivity  extends AppCompatActivity {
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 dateFormat();
             }
+
+        };
+
+        txtDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+              
