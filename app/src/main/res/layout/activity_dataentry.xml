@@ -9,9 +9,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please enter details"
+        android:background="#D7DDF3"
+        android:textAlignment="center"
+        android:text="Please enter your details"
+        android:textAllCaps="false"
+        android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
