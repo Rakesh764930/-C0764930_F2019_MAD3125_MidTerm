@@ -119,28 +119,28 @@ public class CRACustomer  {
 
         double final_slab=0.01;
         double final_slab_perc=13.16;
-        total_taxable_amount=total_taxable_amount-10582.00;
+        total_taxable_amount=total_taxable_amount-12069.00;
         if(total_taxable_amount<=first_slab) {
-            pro_tax = (first_slab * first_slab_perc) / 100;
+            fed_tax = (first_slab * first_slab_perc) / 100;
             total_taxable_amount = total_taxable_amount - first_slab;
         }
 
         if(total_taxable_amount<=second_slab) {
-            pro_tax = (second_slab * second_slab_perc) / 100;
+            fed_tax = (second_slab * second_slab_perc) / 100;
             total_taxable_amount = total_taxable_amount - second_slab;
         }
         if(total_taxable_amount<=third_slab) {
-            pro_tax = (third_slab * third_slab_perc) / 100;
+            fed_tax = (third_slab * third_slab_perc) / 100;
             total_taxable_amount = total_taxable_amount - third_slab;
         }
         if(total_taxable_amount<=fourth_slab) {
-            pro_tax = (fourth_slab * fourth_slab_perc) / 100;
+            fed_tax = (fourth_slab * fourth_slab_perc) / 100;
             total_taxable_amount = total_taxable_amount - fourth_slab;
         }
         if(total_taxable_amount<=final_slab) {
-            pro_tax=(final_slab * final_slab_perc)/100;
+            fed_tax=(final_slab * final_slab_perc)/100;
         }
-        return pro_tax;
+        return fed_tax;
     }
 
 
