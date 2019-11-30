@@ -12,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,10 +32,7 @@ public class DataEntryActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dataentry);
         txtDate= findViewById(R.id.txtDate);
-        rgGender=findViewById(R.id.rgGender);
-        rbMale=findViewById(R.id.rbMale);
-        rbFemale=findViewById(R.id.rbFemale);
-        rbOthers=findViewById(R.id.rbOthers);
+
 
        // https://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -55,12 +53,28 @@ public class DataEntryActivity  extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                
                 new DatePickerDialog(DataEntryActivity.this, date, calendar
                         .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+        rgGender=findViewById(R.id.rgGender);
+        rbMale=findViewById(R.id.rbMale);
+        rbFemale=findViewById(R.id.rbFemale);
+        rbOthers=findViewById(R.id.rbOthers);
+        rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                if (rbMale.isChecked())
+                    Toast.makeText(DataEntryActivity.this, "You Chose Male", Toast.LENGTH_SHORT).show();
+                if (rbFemale.isChecked())
+                    Toast.makeText(DataEntryActivity.this, "You Chose Female", Toast.LENGTH_SHORT).show();
+                if (rbOthers.isChecked())
+                    Toast.makeText(DataEntryActivity.this, "You Chose Others", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
     private void dateFormat() {
