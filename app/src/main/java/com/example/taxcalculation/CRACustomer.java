@@ -101,4 +101,6 @@ public class CRACustomer  {
         return pro_tax;
     }
 
+    // Calculating Federal tax
+
 }
