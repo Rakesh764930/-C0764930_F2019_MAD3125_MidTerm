@@ -30,13 +30,11 @@ public class DataEntryActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dataentry);
-
-
-
-
-
-
         txtDate= findViewById(R.id.txtDate);
+        rgGender=findViewById(R.id.rgGender);
+        rbMale=findViewById(R.id.rbMale);
+        rbFemale=findViewById(R.id.rbFemale);
+        rbOthers=findViewById(R.id.rbOthers);
 
        // https://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -70,6 +68,10 @@ public class DataEntryActivity  extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         txtDate.setText(sdf.format(calendar.getTime()));
-    }}
+    }
+
+
+
+}
 
 
