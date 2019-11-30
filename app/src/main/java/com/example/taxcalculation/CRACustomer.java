@@ -6,16 +6,62 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Toast;
 
-public class CRACustomer implements Parcelable {
+import java.text.NumberFormat;
+import java.util.Locale;
 
+public class CRACustomer implements Parcelable {
+    public static void main(String[] args) {
+
+    }
     int sin_number;
     String first_name;
     String  last_name;
     String full_name=last_name.toUpperCase()+","+first_name;
     double grossIncome;
     double rrsp_contri;
-    double EI;
 
+//setter and getter
+    public int getSin_number() {
+        return sin_number;
+    }
+
+    public void setSin_number(int sin_number) {
+        this.sin_number = sin_number;
+    }
+
+    public String getFirst_name() {
+        return first_name;
+    }
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public double getGrossIncome() {
+        return grossIncome;
+    }
+
+    public void setGrossIncome(double grossIncome) {
+        this.grossIncome = grossIncome;
+    }
+
+    public double getRrsp_contri() {
+        return rrsp_contri;
+    }
+
+    public void setRrsp_contri(double rrsp_contri) {
+        this.rrsp_contri = rrsp_contri;
+    }
+
+    double EI;
     double total_taxable_amount=(grossIncome-cppAmount()+rrspAmount()+eiAmount());
     double total_tax_paid=provincialTax()+federalTax();
 
@@ -188,5 +234,15 @@ public class CRACustomer implements Parcelable {
         dest.writeDouble(EI);
         dest.writeDouble(total_taxable_amount);
         dest.writeDouble(total_tax_paid);
+    }
+
+   // http://zetcode.com/java/numberformat/
+    public String amountFomatter()
+    {
+        NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
+        String val = nf.format("$"+this);
+
+     return val;
+
     }
 }

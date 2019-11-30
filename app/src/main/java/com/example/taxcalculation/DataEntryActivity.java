@@ -34,34 +34,26 @@ public class DataEntryActivity  extends AppCompatActivity  {
     TextView txtAge;
     DatePickerDialog datePickerDialog;
 
-    int dDay;
+     int dDay;
      int dMonth;
      int dYear;
-     int sYear;
-
-    @Override
+     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_entry);
         txtDate= findViewById(R.id.txtDate);
 
-
        // https://stackoverflow.com/questions/14933330/datepicker-how-to-popup-datepicker-when-click-on-edittext
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
-
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, monthOfYear);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 dateFormat();
-
             }
-
         };
-
 
         txtDate.setOnClickListener(new View.OnClickListener() {
 
@@ -99,7 +91,6 @@ public class DataEntryActivity  extends AppCompatActivity  {
                 startActivity(intent);
             }
         });
-
     }
     private void dateFormat() {
         String myFormat = "dd-MMM-yyyy";
@@ -109,9 +100,6 @@ public class DataEntryActivity  extends AppCompatActivity  {
 
 
     }
-
-
-
 
 }
 
