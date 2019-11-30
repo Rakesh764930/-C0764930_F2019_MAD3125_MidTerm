@@ -43,7 +43,14 @@ double EI;
         double ei_slab=53_100.00;
         double ei_rate=1.62;
         double actual_ei=0.0;
-     
+        if(gi>=ei_slab)
+        {
+            actual_ei=(ei_slab*ei_rate)/100;
+        }
+        else {
+            actual_ei=(gi*ei_rate)/100;
+        }
+        return actual_ei;
     }
 
 
