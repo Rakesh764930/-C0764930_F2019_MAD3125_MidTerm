@@ -13,7 +13,7 @@ public class CRACustomer implements Parcelable {
     public static void main(String[] args) {
 
     }
-    int sin_number;
+    String sin_number;
     String first_name;
     String  last_name;
     String full_name=last_name.toUpperCase()+","+first_name;
@@ -21,11 +21,11 @@ public class CRACustomer implements Parcelable {
     double rrsp_contri;
 
 //setter and getter
-    public int getSin_number() {
+    public String getSin_number() {
         return sin_number;
     }
 
-    public void setSin_number(int sin_number) {
+    public void setSin_number(String sin_number) {
         this.sin_number = sin_number;
     }
 
@@ -62,11 +62,11 @@ public class CRACustomer implements Parcelable {
     }
 
     double EI;
-    double total_taxable_amount=(grossIncome-cppAmount()+rrspAmount()+eiAmount());
+    double total_taxable_amount=grossIncome-(cppAmount()+rrspAmount()+eiAmount());
     double total_tax_paid=provincialTax()+federalTax();
 
     protected CRACustomer(Parcel in) {
-        sin_number = in.readInt();
+        sin_number = in.readString();
         first_name = in.readString();
         last_name = in.readString();
         full_name = in.readString();
@@ -194,24 +194,24 @@ public class CRACustomer implements Parcelable {
         double final_slab=0.01;
         double final_slab_perc=33.00;
         total_taxable_amount=total_taxable_amount-12069.00;
-        if(total_taxable_amount<=first_slab) {
+        if(total_taxable_amount>=first_slab) {
             fed_tax = (first_slab * first_slab_perc) / 100;
             total_taxable_amount = total_taxable_amount - first_slab;
         }
 
-        if(total_taxable_amount<=second_slab) {
+        if(total_taxable_amount>=second_slab) {
             fed_tax = (second_slab * second_slab_perc) / 100;
             total_taxable_amount = total_taxable_amount - second_slab;
         }
-        if(total_taxable_amount<=third_slab) {
+        if(total_taxable_amount>=third_slab) {
             fed_tax = (third_slab * third_slab_perc) / 100;
             total_taxable_amount = total_taxable_amount - third_slab;
         }
-        if(total_taxable_amount<=fourth_slab) {
+        if(total_taxable_amount>=fourth_slab) {
             fed_tax = (fourth_slab * fourth_slab_perc) / 100;
             total_taxable_amount = total_taxable_amount - fourth_slab;
         }
-        if(total_taxable_amount<=final_slab) {
+        if(total_taxable_amount>=final_slab) {
             fed_tax=(final_slab * final_slab_perc)/100;
         }
         return fed_tax;
@@ -225,7 +225,7 @@ public class CRACustomer implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(sin_number);
+        dest.writeString(sin_number);
         dest.writeString(first_name);
         dest.writeString(last_name);
         dest.writeString(full_name);
