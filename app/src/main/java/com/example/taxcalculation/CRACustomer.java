@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
+import java.util.Date;
 import java.util.Locale;
 
 public class CRACustomer implements Parcelable {
@@ -16,11 +17,38 @@ public class CRACustomer implements Parcelable {
     String sin_number;
     String first_name;
     String  last_name;
-    String full_name=last_name.toUpperCase()+","+first_name;
+    String full_name;
+    String gender;
+    Date dob,filingDate;
+
+    double fed_Tax, prov_Tax;
+    double rrsp_CarryForward;
+    public Date getDob() {
+        return dob;
+    }
+
+    public Date getFilingDate() {
+        return filingDate;
+    }
+
     double grossIncome;
     double rrsp_contri;
+    double EI;
+    double total_taxable_amount=grossIncome-(cppAmount()+rrspAmount()+eiAmount());
+    double total_tax_paid=provincialTax()+federalTax();
 
-//setter and getter
+
+    public CRACustomer(String sinNumber, String firstName,
+                       String lastName, String gender, double grossIncome, double rrspContri)
+    {
+        this.sin_number = sinNumber;
+        this.first_name = firstName;
+        this.last_name = lastName;
+        this.gender = gender;
+        this.grossIncome = grossIncome;
+        this.rrsp_contri = rrspContri;
+    }
+    //setter and getter
     public String getSin_number() {
         return sin_number;
     }
@@ -35,6 +63,11 @@ public class CRACustomer implements Parcelable {
 
     public void setFirst_name(String first_name) {
         this.first_name = first_name;
+    }
+
+    public String getFull_name() {
+        return last_name.toUpperCase() + ", " +
+                first_name.substring(0,1).toUpperCase() + first_name.substring(1);
     }
 
     public String getLast_name() {
@@ -61,23 +94,21 @@ public class CRACustomer implements Parcelable {
         this.rrsp_contri = rrsp_contri;
     }
 
-    double EI;
-    double total_taxable_amount=grossIncome-(cppAmount()+rrspAmount()+eiAmount());
-    double total_tax_paid=provincialTax()+federalTax();
 
     protected CRACustomer(Parcel in) {
         sin_number = in.readString();
         first_name = in.readString();
         last_name = in.readString();
+        gender = in.readString();
         full_name = in.readString();
         grossIncome = in.readDouble();
         rrsp_contri = in.readDouble();
-        EI = in.readDouble();
-        total_taxable_amount = in.readDouble();
-        total_tax_paid = in.readDouble();
+       // EI = in.readDouble();
+        //total_taxable_amount = in.readDouble();
+        //total_tax_paid = in.readDouble();
     }
 
-    public static final Creator<CRACustomer> CREATOR = new Creator<CRACustomer>() {
+    public static final Parcelable.Creator<CRACustomer> CREATOR = new Creator<CRACustomer>() {
         @Override
         public CRACustomer createFromParcel(Parcel in) {
             return new CRACustomer(in);
@@ -88,6 +119,14 @@ public class CRACustomer implements Parcelable {
             return new CRACustomer[size];
         }
     };
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     // calculating CPP amount
     public double cppAmount(){
@@ -229,11 +268,12 @@ public class CRACustomer implements Parcelable {
         dest.writeString(first_name);
         dest.writeString(last_name);
         dest.writeString(full_name);
+        dest.writeString(gender);
         dest.writeDouble(grossIncome);
         dest.writeDouble(rrsp_contri);
-        dest.writeDouble(EI);
-        dest.writeDouble(total_taxable_amount);
-        dest.writeDouble(total_tax_paid);
+        //dest.writeDouble(EI);
+        //dest.writeDouble(total_taxable_amount);
+        //dest.writeDouble(total_tax_paid);
     }
 
    // http://zetcode.com/java/numberformat/

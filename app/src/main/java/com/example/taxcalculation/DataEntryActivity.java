@@ -32,6 +32,10 @@ public class DataEntryActivity  extends AppCompatActivity  {
     TextView txtFullName;
     EditText edtFname;
     EditText edtLname;
+    EditText edtGross;
+    EditText edtsin;
+    EditText edtRrsp;
+    String gender=" ";
     Button btnSubmit;
     TextView txtAge;
     DatePickerDialog datePickerDialog;
@@ -75,14 +79,21 @@ public class DataEntryActivity  extends AppCompatActivity  {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
-                if (rbMale.isChecked())
-                    Toast.makeText(DataEntryActivity.this, "You Chose Male", Toast.LENGTH_SHORT).show();
-                if (rbFemale.isChecked())
-                    Toast.makeText(DataEntryActivity.this, "You Chose Female", Toast.LENGTH_SHORT).show();
-                if (rbOthers.isChecked())
-                    Toast.makeText(DataEntryActivity.this, "You Chose Others", Toast.LENGTH_SHORT).show();
+                if(i == R.id.rbMale){
+                    gender = rbMale.getText().toString();
+                }else if(i == R.id.rbFemale){
+                    gender = rbFemale.getText().toString();
+                }else {
+                    gender = rbOthers.getText().toString();
+                }
             }
+
         });
+        edtFname=findViewById(R.id.edtFname);
+         edtLname=findViewById(R.id.edtLname);
+         edtsin=findViewById(R.id.edtSin);
+         edtGross=findViewById(R.id.edtGrossIncome);
+         edtRrsp=findViewById(R.id.edtRRSP);
 
         //submit button
         btnSubmit=findViewById(R.id.btnSubmit);
@@ -95,8 +106,15 @@ public class DataEntryActivity  extends AppCompatActivity  {
                     btnSubmit.setClickable(false);
                 }
                 else{
-                Intent intent=new Intent(DataEntryActivity.this,DataDisplayActivity.class);
-                startActivity(intent);
+                    Double grossIncome = Double.parseDouble(edtGross.getText().toString());
+                    Double rrsp = Double.parseDouble(edtRrsp.getText().toString());
+                   CRACustomer customer = new CRACustomer(edtsin.getText().toString(),
+                            edtFname.getText().toString(),
+                            edtLname.getText().toString(),
+                            gender, grossIncome, rrsp);
+                    Intent intent = new Intent(DataEntryActivity.this, DataDisplayActivity.class);
+                    intent.putExtra("CRACustomer", customer);
+                    startActivity(intent);
             }}
         });
     }
