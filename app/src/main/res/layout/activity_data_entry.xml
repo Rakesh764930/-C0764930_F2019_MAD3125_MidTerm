@@ -50,14 +50,7 @@
             android:layout_marginBottom="8dp"
             android:hint="Enter last name" />
 
-        <TextView
-            android:id="@+id/txtAge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:outlineProvider="bounds"
 
-            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/txtDate"
@@ -66,6 +59,14 @@
             android:layout_weight="1"
             android:outlineProvider="bounds"
             android:text="Select Date Of Birth"
+
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/txtAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:outlineProvider="bounds"
 
             android:textSize="18sp" />
 
