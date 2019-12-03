@@ -19,18 +19,16 @@ public class CRACustomer implements Parcelable {
     String  last_name;
     String full_name;
     String gender;
-    Date dob,filingDate;
+    String dob,filingDate;
     String aGe;
 
     double fed_Tax, prov_Tax;
     double rrsp_CarryForward;
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public Date getFilingDate() {
-        return filingDate;
-    }
+
 
     double grossIncome;
     double rrsp_contri;
@@ -40,12 +38,13 @@ public class CRACustomer implements Parcelable {
 
 
     public CRACustomer(String sinNumber, String firstName,
-                       String lastName, String gender, double grossIncome, double rrspContri,String aGe)
+                       String lastName, String gender, double grossIncome, double rrspContri,String aGe,String filingDate)
     {
         this.sin_number = sinNumber;
         this.first_name = firstName;
         this.last_name = lastName;
         this.gender = gender;
+        this.filingDate=filingDate;
         this.aGe=aGe;
         this.grossIncome = grossIncome;
         this.rrsp_contri = rrspContri;
@@ -102,6 +101,7 @@ public class CRACustomer implements Parcelable {
         first_name = in.readString();
         last_name = in.readString();
         gender = in.readString();
+        filingDate=in.readString();
         aGe=in.readString();
         full_name = in.readString();
         grossIncome = in.readDouble();
@@ -141,6 +141,7 @@ public class CRACustomer implements Parcelable {
         dest.writeString(first_name);
         dest.writeString(last_name);
         dest.writeString(full_name);
+        dest.writeString(filingDate);
         dest.writeString(aGe);
         dest.writeString(gender);
         dest.writeDouble(grossIncome);

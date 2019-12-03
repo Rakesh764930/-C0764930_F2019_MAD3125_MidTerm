@@ -106,13 +106,18 @@ public class DataEntryActivity  extends AppCompatActivity  {
                     btnSubmit.setClickable(false);
                 }
                 else{
+
+                    SimpleDateFormat sm=new SimpleDateFormat("dd-MMM-yyyy", Locale.US);
+                    Calendar myCalendar = Calendar.getInstance();
+                    String currdate=sm.format(myCalendar.getTime());
+
                     String age1=dateFormat();
                     Double grossIncome = Double.parseDouble(edtGross.getText().toString());
                     Double rrsp = Double.parseDouble(edtRrsp.getText().toString());
                    CRACustomer customer = new CRACustomer(edtsin.getText().toString(),
                             edtFname.getText().toString(),
                             edtLname.getText().toString(),
-                            gender, grossIncome, rrsp,age1);
+                            gender, grossIncome, rrsp,age1,currdate);
                     Intent intent = new Intent(DataEntryActivity.this, DataDisplayActivity.class);
                     intent.putExtra("CRACustomer", customer);
 

@@ -23,7 +23,7 @@ public class DataDisplayActivity extends AppCompatActivity {
     TextView txtfull_Name;
     TextView txtgenDer;
     TextView txtgross_income,
-            txttaxDate, txtfederal_Tax, txtprovincial_Tax, lblcpp,
+            txtFilingDate, txtfederal_Tax, txtprovincial_Tax, lblcpp,
             txtEmpInsurance, txtRRSPcontri, txtCfRRSP,
             txtTaxableIncome, lblTaxPaid,txtAge;
     double cpp = 0, ei = 0;  double rrsp = 0, rrspCf = 0, taxableIncome, fedTax,
@@ -45,6 +45,7 @@ public class DataDisplayActivity extends AppCompatActivity {
         txtprovincial_Tax = findViewById(R.id.txt_D_provincialTax);
         lblTaxPaid = findViewById(R.id.txt_D_taxPayed);
 txtAge=findViewById(R.id.txtAge);
+txtFilingDate=findViewById(R.id.txtFilingDate);
 
         //collecting intent
         Intent mIntent = getIntent();
@@ -56,6 +57,7 @@ txtAge=findViewById(R.id.txtAge);
         txtgross_income.setText("\tGROSS INCOME: \t" + customer.getGrossIncome());
         txtRRSPcontri.setText("\tRRSP Contributed: \t" + customer.getRrsp_contri());
 txtAge.setText("\tAge:"+customer.aGe);
+txtFilingDate.setText("\t Filing Date:\t"+customer.filingDate);
         // calculate  cpp
         double grossIncome = customer.getGrossIncome();
         if(grossIncome > 57400.00){
@@ -63,14 +65,14 @@ txtAge.setText("\tAge:"+customer.aGe);
         } else {
             cpp = (grossIncome * 0.051);
         }
-        lblcpp.setText("\tCPP COntribution in Year:\t" + cpp);
+        lblcpp.setText("\tCPP COntribution Amount  :\t" + cpp);
         // calculate employement insurance
         if(grossIncome > 53100){
             ei = (53100 * 0.0162); //perc 1.62%
         }else{
             ei = (grossIncome * (1.62/100));
         }
-        txtEmpInsurance.setText("\tEmployeement Insurance: \t" + ei);
+        txtEmpInsurance.setText("\tEmployement Insurance amount : \t" + ei);
         // calculate RRSP
         rrsp = customer.getRrsp_contri();
         double maxRRSP = (grossIncome * 0.18); //perc= 18%
