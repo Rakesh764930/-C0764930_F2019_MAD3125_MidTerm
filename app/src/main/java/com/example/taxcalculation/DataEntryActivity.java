@@ -106,19 +106,21 @@ public class DataEntryActivity  extends AppCompatActivity  {
                     btnSubmit.setClickable(false);
                 }
                 else{
+                    String age1=dateFormat();
                     Double grossIncome = Double.parseDouble(edtGross.getText().toString());
                     Double rrsp = Double.parseDouble(edtRrsp.getText().toString());
                    CRACustomer customer = new CRACustomer(edtsin.getText().toString(),
                             edtFname.getText().toString(),
                             edtLname.getText().toString(),
-                            gender, grossIncome, rrsp);
+                            gender, grossIncome, rrsp,age1);
                     Intent intent = new Intent(DataEntryActivity.this, DataDisplayActivity.class);
                     intent.putExtra("CRACustomer", customer);
+
                     startActivity(intent);
             }}
         });
     }
-    private String dateFormat() {
+    public String dateFormat() {
         String myFormat = "dd-MMM-yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
@@ -141,6 +143,15 @@ return  n1;
 
 
     }
+    String age;
 
+    public String getAge() {
+        String n=dateFormat();
+        return n;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
 }
 

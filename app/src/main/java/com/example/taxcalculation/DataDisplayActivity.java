@@ -14,6 +14,9 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class DataDisplayActivity extends AppCompatActivity {
     CRACustomer customer;
     TextView txtsin;
@@ -22,7 +25,7 @@ public class DataDisplayActivity extends AppCompatActivity {
     TextView txtgross_income,
             txttaxDate, txtfederal_Tax, txtprovincial_Tax, lblcpp,
             txtEmpInsurance, txtRRSPcontri, txtCfRRSP,
-            txtTaxableIncome, lblTaxPaid;
+            txtTaxableIncome, lblTaxPaid,txtAge;
     double cpp = 0, ei = 0;  double rrsp = 0, rrspCf = 0, taxableIncome, fedTax,
             proTax, totalTaxPaid;
     @Override
@@ -41,7 +44,7 @@ public class DataDisplayActivity extends AppCompatActivity {
         txtfederal_Tax = findViewById(R.id.txt_D_federalTax);
         txtprovincial_Tax = findViewById(R.id.txt_D_provincialTax);
         lblTaxPaid = findViewById(R.id.txt_D_taxPayed);
-
+txtAge=findViewById(R.id.txtAge);
 
         //collecting intent
         Intent mIntent = getIntent();
@@ -52,7 +55,7 @@ public class DataDisplayActivity extends AppCompatActivity {
         txtgenDer.setText(" GENDER: \t" + customer.getGender());
         txtgross_income.setText("\tGROSS INCOME: \t" + customer.getGrossIncome());
         txtRRSPcontri.setText("\tRRSP Contributed: \t" + customer.getRrsp_contri());
-
+txtAge.setText("\tAge:"+customer.aGe);
         // calculate  cpp
         double grossIncome = customer.getGrossIncome();
         if(grossIncome > 57400.00){
@@ -85,7 +88,8 @@ public class DataDisplayActivity extends AppCompatActivity {
         txtTaxableIncome.setText("\tTotal Taxable income:\t" + (double) taxableIncome);
         //federal tax
         double fed_tax = federalTax();
-        txtfederal_Tax.setText("\tFederal Tax: \t" + fed_tax);
+        String n = amountFomatter(fed_tax);
+        txtfederal_Tax.setText("\tFederal Tax: \t" + n);
         // Provincial Tax
         double pro_tax = provincialTax();
         txtprovincial_Tax.setText("\tProvincial Tax:\t" + pro_tax);
@@ -136,6 +140,7 @@ public class DataDisplayActivity extends AppCompatActivity {
         return fedTax;
     }
 
+
     //calculate provincial tax
     public  double provincialTax(){
         double temp = taxableIncome ;
@@ -168,6 +173,21 @@ public class DataDisplayActivity extends AppCompatActivity {
     }
     public  double TaxPaid(){
         return totalTaxPaid=fedTax+proTax;
+    }
+
+
+    // http://zetcode.com/java/numberformat/
+    public String amountFomatter(double v)
+    {
+        double v1=v;
+        NumberFormat nf = NumberFormat.getInstance(new Locale("en", "US"));
+
+
+            String val = nf.format(v1);
+
+
+            return val;
+
     }
 
 }
