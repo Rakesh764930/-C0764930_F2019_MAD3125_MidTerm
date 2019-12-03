@@ -21,7 +21,7 @@ public class DataDisplayActivity extends AppCompatActivity {
     CRACustomer customer;
     TextView txtsin;
     TextView txtfull_Name;
-    TextView txtgenDer;
+    TextView txtgender;
     TextView txtgross_income,
             txtFilingDate, txtfederal_Tax, txtprovincial_Tax, lblcpp,
             txtEmpInsurance, txtRRSPcontri, txtCfRRSP,
@@ -34,7 +34,7 @@ public class DataDisplayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data_display);
         txtsin = findViewById(R.id.txtSIN);
         txtfull_Name = findViewById(R.id.txtfull_Name);
-        txtgenDer =   findViewById(R.id.txtGender);
+       txtgender =   findViewById(R.id.txtGender);
         txtgross_income = findViewById(R.id.txtgrossIncome);
         txtRRSPcontri = findViewById(R.id.txt_D_RRSPContri);
         lblcpp = findViewById(R.id.txtCpp);
@@ -53,11 +53,11 @@ txtFilingDate=findViewById(R.id.txtFilingDate);
 
         txtsin.setText("\tSIN: \t" + customer.getSin_number());
         txtfull_Name.setText("\tFULL NAME: \t" + customer.getFull_name());
-        txtgenDer.setText(" GENDER: \t" + customer.getGender());
+        txtgender.setText("\t Gender :\t"+customer.getGender());
         txtgross_income.setText("\tGROSS INCOME: \t" + customer.getGrossIncome());
         txtRRSPcontri.setText("\tRRSP Contributed: \t" + customer.getRrsp_contri());
-txtAge.setText("\tAge:"+customer.aGe);
-txtFilingDate.setText("\t Filing Date:\t"+customer.filingDate);
+        txtAge.setText("\tAge:"+customer.aGe);
+        txtFilingDate.setText("\t Filing Date:\t"+customer.filingDate);
         // calculate  cpp
         double grossIncome = customer.getGrossIncome();
         if(grossIncome > 57400.00){
@@ -97,7 +97,7 @@ txtFilingDate.setText("\t Filing Date:\t"+customer.filingDate);
         txtprovincial_Tax.setText("\tProvincial Tax:\t" + pro_tax);
         // total tax paid
         double taxpaid = TaxPaid();
-        lblTaxPaid.setText("\tTotal tax Paid:\t" + taxpaid);
+        lblTaxPaid.setText("\tTotal tax Paid:\t\t" + taxpaid);
 
     }
 
@@ -116,7 +116,7 @@ txtFilingDate.setText("\t Filing Date:\t"+customer.filingDate);
 
         double temp = taxableIncome ;
         if(temp <= 12069.00){
-            fedTax = 0;//0%
+            fedTax = 0;//perc=0%
             temp = taxableIncome - 12069.00;
         }
         if(temp >= 12069.01){
